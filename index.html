@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21st Macroeconomics and Finance Conference - IGIDR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4eaf5 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Box */
+        .mfc-header {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto 20px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+            border: 1px solid #e5e5e5;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            animation: fadeIn 0.8s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mfc-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, #b64040, #d87070);
+        }
+
+        .mfc-header img {
+            width: 90px;
+            height: 90px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .mfc-header h2 {
+            font-size: 26px;
+            color: #333;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .mfc-header .conference-date {
+            color: #666;
+            font-size: 16px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* Main Section */
+        .mfc-section {
+            width: 90%;
+            max-width: 900px;
+            margin: 20px auto 40px;
+            background: #ffffff;
+            padding: 35px 30px;
+            border-radius: 16px;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+            border: 1px solid #e5e5e5;
+            animation: fadeIn 0.8s ease;
+            animation-delay: 0.2s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            color: #b64040;
+        }
+
+        /* List Styling */
+        .mfc-links {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .mfc-links li {
+            margin: 18px 0;
+            padding: 18px 25px;
+            background: #f9f3f3;
+            border-left: 5px solid #b64040;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mfc-links li:hover {
+            background: #ffe6d5;
+            border-left: 5px solid #ff7a00;
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .mfc-links li i {
+            color: #b64040;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .mfc-links li:hover i {
+            color: #ff7a00;
+        }
+
+        .mfc-links li a {
+            font-size: 20px;
+            text-decoration: none;
+            color: #b64040;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .mfc-links li a:hover {
+            color: #ff7a00;
+        }
+
+        /* Info Section */
+        .info-section {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+            border: 1px solid #e5e5e5;
+            animation: fadeIn 0.8s ease;
+            animation-delay: 0.4s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #b64040;
+        }
+
+        .info-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card h3 i {
+            color: #b64040;
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #fff;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #b64040;
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: #ddd;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #b64040;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #b64040;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* Mobile Responsiveness */
+        @media(max-width: 768px) {
+            .mfc-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 20px;
+            }
+
+            .mfc-header img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .mfc-header h2 {
+                font-size: 22px;
+            }
+
+            .mfc-section {
+                padding: 25px 20px;
+            }
+
+            .mfc-links li {
+                padding: 15px 20px;
+            }
+
+            .mfc-links li a {
+                font-size: 18px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth Fade Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header With Logo + Title -->
+    <div class="mfc-header">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ866lWopUTSvPMBd3UelobSFiFU68l_xf3Asus0zAgf8RAbiv0hCaOzh2IM0lHLoAHLg&usqp=CAU"
+            alt="IGIDR Logo">
+        <div>
+            <h2>21st Macroeconomics and Finance Conference</h2>
+            <div class="conference-date">Indira Gandhi Institute of Development Research (IGIDR)</div>
+        </div>
+    </div>
+
+    <!-- Main Section with Links -->
+    <div id="new_item" class="mfc-section">
+        <h3 class="section-title">
+            <i class="fas fa-file-alt"></i>
+            Conference Materials
+        </h3>
+        <ul class="mfc-links">
+            <li>
+                <i class="fas fa-calendar-alt"></i>
+                <a target="_blank" href="./Agenda.pdf">Agenda of 21<sup>st</sup> MFC</a>
+            </li>
+            <li>
+                <i class="fas fa-users"></i>
+                <a target="_blank" href="./allBio.pdf">Bio of Speakers</a>
+            </li>
+            <li>
+                <i class="fas fa-info-circle"></i>
+                <a target="_blank" href="./otherInfo.pdf">Other Information</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Additional Information Section -->
+    <div class="info-section">
+        <h3 class="section-title">
+            <i class="fas fa-landmark"></i>
+            About IGIDR
+        </h3>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3><i class="fas fa-university"></i> Our Mission</h3>
+                <p>IGIDR is an advanced research institute established and fully funded by the Reserve Bank of India for
+                    carrying out research on development issues from a multi-disciplinary perspective.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+                <p>IGIDR is located in Mumbai, India's financial capital, providing a unique environment for studying
+                    economic and financial issues.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-graduation-cap"></i> Academic Excellence</h3>
+                <p>The institute offers M.Sc., Ph.D. and M.Phil. programs in economics and has a strong research focus
+                    on development studies.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About MFC</h3>
+                <p>The Macroeconomics and Finance Conference is an annual event organized by IGIDR, bringing together
+                    leading economists, researchers, and policymakers to discuss contemporary issues in macroeconomics
+                    and finance.</p>
+                <div class="social-links">
+                    <a target="_blank" href="http://www.facebook.com/pages/Igidr/145834332149375">
+                        <i class="fab fa-facebook-f"></i></a>
+                    <a target="_blank" href="http://www.twitter.com/Igidr_Mumbai">
+                        <i class="fab fa-twitter"></i></a>
+                    <a target="_blank" href="https://www.linkedin.com/school/15095099">
+                        <i class="fab fa-linkedin-in"></i></a>
+                    <a target="_blank" href="https://www.youtube.com/channel/UCRqVOlnhxZJ44y11B5vkB6A/live">
+                        <i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> IGIDR, Gen. A.K. Vaidya Marg, Goregaon (East), Mumbai 400065,
+                    INDIA</p>
+                <!-- <p><i class="fas fa-phone"></i> +91 22 2840 0919 / 2840 0920</p> -->
+                <p><i class="fas fa-envelope"></i> mfc@igidr.ac.in</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> Indira Gandhi Institute of Development Research. All Rights
+                Reserved.</p>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        var currentYear = new Date().getFullYear();
+        document.getElementById('current-year').innerHTML = currentYear;
+    </script>
+
+</body>
+
+</html>
